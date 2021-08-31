@@ -19,9 +19,12 @@ import java.util.List;
 @Service
 public class CoronaVirusDataService {
 
+    private static final String DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
     private List<LocationStats> allstats = new ArrayList<>();
 
-    private static String DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
+    public List<LocationStats> getAllstats() {
+        return allstats;
+    }
 
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
@@ -40,9 +43,12 @@ public class CoronaVirusDataService {
             LocationStats locationStats = new LocationStats();
             locationStats.setState(record.get("Province/State"));
             locationStats.setCountry(record.get("Country/Region"));
-            locationStats.setLatestTotalCases(Integer.parseInt(record.get(record.size() - 1)));
-
-            System.out.println(locationStats);
+            int toDayCases = Integer.parseInt(record.get(record.size() - 1));
+            locationStats.setLatestTotalCases(toDayCases);
+            int preDayCases = Integer.parseInt(record.get(record.size() - 2));
+            int DiffCases = toDayCases - preDayCases;
+            locationStats.setDiffFromPreDay(DiffCases);
+//            System.out.println(locationStats);
             newStats.add(locationStats);
         }
         this.allstats = newStats;

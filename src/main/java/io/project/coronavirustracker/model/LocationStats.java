@@ -3,7 +3,16 @@ package io.project.coronavirustracker.model;
 public class LocationStats {
     private String state;
     private String country;
-    private int LatestTotalCases;
+    private int latestTotalCases;
+    private int diffFromPreDay;
+
+    public int getDiffFromPreDay() {
+        return diffFromPreDay;
+    }
+
+    public void setDiffFromPreDay(int diffFromPreDay) {
+        this.diffFromPreDay = diffFromPreDay;
+    }
 
     public String getState() {
         return state;
@@ -22,11 +31,11 @@ public class LocationStats {
     }
 
     public int getLatestTotalCases() {
-        return LatestTotalCases;
+        return latestTotalCases;
     }
 
     public void setLatestTotalCases(int latestTotalCases) {
-        LatestTotalCases = latestTotalCases;
+        this.latestTotalCases = latestTotalCases;
     }
 
     @Override
@@ -34,7 +43,7 @@ public class LocationStats {
         return "LocationStats{" +
                 "state='" + state + '\'' +
                 ", country='" + country + '\'' +
-                ", LatestTotalCases=" + LatestTotalCases +
+                ", latestTotalCases=" + latestTotalCases +
                 '}';
     }
 }
