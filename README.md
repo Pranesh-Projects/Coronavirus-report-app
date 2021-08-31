@@ -1,2 +1,2 @@
 # Coronavirus-tracker
-Displays Number of Coronavirus cases in all countries and new cases
+Displays Coronavirus cases and new cases in each countries and total number of cases worldwide
