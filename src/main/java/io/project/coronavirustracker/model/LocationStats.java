@@ -6,6 +6,16 @@ public class LocationStats {
     private int latestTotalCases;
     private int diffFromPreDay;
 
+    public LocationStats() {
+    }
+
+    public LocationStats(String state, String country, int latestTotalCases, int diffFromPreDay) {
+        this.state = state;
+        this.country = country;
+        this.latestTotalCases = latestTotalCases;
+        this.diffFromPreDay = diffFromPreDay;
+    }
+
     public int getDiffFromPreDay() {
         return diffFromPreDay;
     }

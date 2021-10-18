@@ -17,15 +17,15 @@ public class HomeController {
     public String home(Model model) {
 
 //        1 st method for 'stat'
-        int totalReportedCases = coronaVirusDataService.getAllstats().stream().mapToInt(stat -> stat.getLatestTotalCases()).sum();
+        int totalReportedCases = coronaVirusDataService.getAllStats().stream().mapToInt(LocationStats::getLatestTotalCases).sum();
 //        2 nd method for 'LocationStats'
-//        int totalReportedCases = coronaVirusDataService.getAllstats().stream().mapToInt(LocationStats::getLatestTotalCases).sum();
-        model.addAttribute("locationStats", coronaVirusDataService.getAllstats());
-        int totalNewCases = coronaVirusDataService.getAllstats().stream().mapToInt(LocationStats::getDiffFromPreDay).sum();
+//        int totalReportedCases = coronaVirusDataService.getAllStats().stream().mapToInt(LocationStats::getLatestTotalCases).sum();
+        model.addAttribute("locationStats", coronaVirusDataService.getAllStats());
+        int totalNewCases = coronaVirusDataService.getAllStats().stream().mapToInt(LocationStats::getDiffFromPreDay).sum();
         model.addAttribute("totalReportedCases", totalReportedCases);
         model.addAttribute("totalNewCases", totalNewCases);
 
-//        3 rd method use 'List<LocationStats> allStats = coronaVirusDataService.getAllstats()' for easy usage
+//        3 rd method use 'List<LocationStats> allStats = coronaVirusDataService.getAllStats()' for easy usage
 
         return "home";
     }

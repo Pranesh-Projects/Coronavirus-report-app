@@ -20,10 +20,10 @@ import java.util.List;
 public class CoronaVirusDataService {
 
     private static final String DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
-    private List<LocationStats> allstats = new ArrayList<>();
+    private List<LocationStats> allStats = new ArrayList<>();
 
-    public List<LocationStats> getAllstats() {
-        return allstats;
+    public List<LocationStats> getAllStats() {
+        return allStats;
     }
 
     @PostConstruct
@@ -51,7 +51,6 @@ public class CoronaVirusDataService {
 //            System.out.println(locationStats);
             newStats.add(locationStats);
         }
-        this.allstats = newStats;
-
+        this.allStats = newStats;
     }
 }
